@@ -53,6 +53,14 @@
       <Footer />
     </div>
   </div>
+    <div>
+    <ul>
+      <li v-for="tx in transactions" :key="tx.id">
+        {{ tx.date }} - {{ tx.payee_name }} - {{ tx.amount }}
+        <button @click="$emit('flip-transfer', tx)">Flip & Transfer</button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -165,5 +173,8 @@ export default {
     Budgets,
     Transactions
   }
+}
+  export default {
+  props: ['transactions']
 }
 </script>
